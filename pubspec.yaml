@@ -1,0 +1,35 @@
+name: yuktidea_ui
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.18.6 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.5
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  lints: 2.0.1
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/font/Montserrat-VariableFont_wght.ttf
+    - family: Posterama
+      fonts:
+        - asset: assets\font\Posterama 2001 W04 Black.ttf
+    - family: Poppins
+      fonts:
+        - asset: assets\font\Poppins-Regular.ttf
+
