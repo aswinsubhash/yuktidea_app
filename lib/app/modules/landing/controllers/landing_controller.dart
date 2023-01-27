@@ -7,7 +7,7 @@ class LandingController extends GetxController {
       () => LoginView(),
       transition: Transition.rightToLeftWithFade,
       duration: Duration(
-        milliseconds: 500,
+        milliseconds: 400,
       ),
     );
   }
