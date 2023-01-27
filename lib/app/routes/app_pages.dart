@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:yuktidea_ui/app/modules/auth/landing/bindings/landing_binding.dart';
+import 'package:yuktidea_ui/app/modules/landing/bindings/landing_binding.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/bindings/login_binding.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/views/login_view.dart';
 import 'package:yuktidea_ui/app/modules/auth/otp_verification/bindings/otp_verification_binding.dart';
@@ -9,7 +9,7 @@ import 'package:yuktidea_ui/app/modules/auth/sign_up/views/sign_up_view.dart';
 import 'package:yuktidea_ui/app/modules/home/bindings/home_binding.dart';
 import 'package:yuktidea_ui/app/modules/home/views/home_view.dart';
 
-import '../modules/auth/landing/views/landing_view.dart';
+import '../modules/landing/views/landing_view.dart';
 
 part 'app_routes.dart';
 
