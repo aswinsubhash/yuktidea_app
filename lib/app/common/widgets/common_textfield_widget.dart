@@ -7,18 +7,21 @@ class CustomTextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final String? validationMessage;
   final String? checkValidationMessage;
+  final TextInputType keyboardType;
 
-  CustomTextFieldWidget(
-      {Key? key,
-      required this.hintText,
-      required this.controller,
-      this.validationMessage,
-      this.checkValidationMessage})
-      : super(key: key);
+  CustomTextFieldWidget({
+    Key? key,
+    required this.hintText,
+    required this.controller,
+    this.validationMessage,
+    this.checkValidationMessage,
+    required this.keyboardType,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return validationMessage;

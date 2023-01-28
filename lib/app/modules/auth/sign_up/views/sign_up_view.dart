@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:yuktidea_ui/app/common/widgets/common_button_widget.dart';
@@ -51,6 +52,7 @@ class SignUpView extends GetView<SignUpController> {
                       hintText: 'Name',
                       controller: controller.nameController,
                       validationMessage: 'Please enter name',
+                      keyboardType: TextInputType.text,
                     ),
                   ),
                   SizedBox(
@@ -60,6 +62,7 @@ class SignUpView extends GetView<SignUpController> {
                       controller: controller.emailController,
                       validationMessage: 'Please enter email',
                       checkValidationMessage: 'Enter a valid email',
+                      keyboardType: TextInputType.emailAddress,
                     ),
                   ),
                   SizedBox(
@@ -69,6 +72,7 @@ class SignUpView extends GetView<SignUpController> {
                       controller: controller.phoneNumberController,
                       validationMessage: 'Please enter phone number',
                       checkValidationMessage: 'Enter a valid phone number',
+                      keyboardType: TextInputType.number,
                     ),
                   ),
                   SizedBox(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/bindings/login_binding.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/views/login_view.dart';
+import 'package:yuktidea_ui/app/modules/auth/otp_verification/views/otp_verification_view.dart';
 import 'package:yuktidea_ui/app/utils/app_snackbar_widget.dart';
 
 class SignUpController extends GetxController {
@@ -24,6 +25,8 @@ class SignUpController extends GetxController {
         AppSnackbars.showErrorSnackBar(
           message: 'Password do not match',
         );
+      }else{
+        Get.to(()=>OtpVerificationView());
       }
     }
   }
@@ -31,7 +34,7 @@ class SignUpController extends GetxController {
   void onLoginClick() {
     Get.off(() => LoginView(),
         binding: LoginBinding(),
-        transition: Transition.rightToLeftWithFade,
+        transition: Transition.leftToRight,
         duration: Duration(
           milliseconds: 400,
         ));

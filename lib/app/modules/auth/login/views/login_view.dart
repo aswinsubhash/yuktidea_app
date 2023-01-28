@@ -55,6 +55,7 @@ class LoginView extends GetView<LoginController> {
                         validationMessage: 'Please enter email or phone',
                         checkValidationMessage:
                             'Please enter valid email or password',
+                            keyboardType: TextInputType.emailAddress,
                       ),
                     ),
                     SizedBox(

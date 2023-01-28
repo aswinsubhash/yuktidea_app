@@ -21,7 +21,7 @@ class LoginController extends GetxController {
   void onSignupClick() {
     Get.off(() => SignUpView(),
         binding: SignUpBinding(),
-        transition: Transition.leftToRightWithFade,
+        transition: Transition.rightToLeft,
         duration: Duration(
           milliseconds: 400,
         ));
