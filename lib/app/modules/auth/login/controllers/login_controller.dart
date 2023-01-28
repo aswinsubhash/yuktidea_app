@@ -1,20 +1,20 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
+  var isPasswordHidden = true.obs;
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailOrPasswordController  = TextEditingController();
+  final GlobalKey<FormState> formKeyLogin = GlobalKey<FormState>();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void passwordHiding() {
+    isPasswordHidden.value = !isPasswordHidden.value;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void onLoginClick() {
+    if (formKeyLogin.currentState!.validate()) {
+     
+    }
   }
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

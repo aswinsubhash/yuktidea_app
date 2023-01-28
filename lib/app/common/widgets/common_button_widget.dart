@@ -6,7 +6,6 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final Color buttonColor;
   final double radius;
-  
 
   const CustomButton({
     Key? key,
@@ -20,26 +19,22 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColor,
-        minimumSize: const Size(double.infinity, 40),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radius),
-        )
-      ),
+          backgroundColor: buttonColor,
+          minimumSize: const Size(double.infinity, 40),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(radius),
+          )),
       child: Text(
         text,
-        style:  TextStyle(
+        style: TextStyle(
           color: textColor,
           fontSize: 16,
-         
           fontWeight: FontWeight.bold,
+          fontFamily: 'Montserrat',
         ),
       ),
-      
-      
     );
   }
 }

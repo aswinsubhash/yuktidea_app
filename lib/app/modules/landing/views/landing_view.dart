@@ -32,15 +32,15 @@ class LandingView extends GetView<LandingController> {
                 begin: FractionalOffset.topCenter,
                 end: FractionalOffset.bottomCenter,
                 colors: [
-                  Colors.black.withOpacity(0.1),
-                  Colors.black.withOpacity(0.8),
+                  AppColors.kBlackColor.withOpacity(0.1),
+                  AppColors.kBlackColor.withOpacity(0.8),
                 ],
                 stops: [0.0, 1.0],
               ),
             ),
           ),
           Positioned(
-            top: 50,
+            top: 70,
             left: 50,
             child: Column(
               children: [
@@ -61,13 +61,14 @@ class LandingView extends GetView<LandingController> {
                     ),
                   ],
                 ),
-                commonHeight(Get.height / 1.5),
+                commonHeight(Get.height / 1.6),
                 Text(
                   'YOUR ONE STOP SOLUTION TO',
                   style: TextStyle(
                     color: AppColors.kWhiteColor,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Montserrat'
                   ),
                 ),
                 commonHeight(10),
@@ -77,6 +78,7 @@ class LandingView extends GetView<LandingController> {
                     color: AppColors.kWhiteColor,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Montserrat'
                   ),
                 ),
                 commonHeight(20),
