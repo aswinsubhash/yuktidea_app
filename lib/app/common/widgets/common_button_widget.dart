@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuktidea_ui/app/utils/app_string.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -32,7 +33,7 @@ class CustomButton extends StatelessWidget {
           color: textColor,
           fontSize: 16,
           fontWeight: FontWeight.bold,
-          fontFamily: 'Montserrat',
+          fontFamily: AppString.fontFamily,
         ),
       ),
     );

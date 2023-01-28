@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:yuktidea_ui/app/utils/app_colors.dart';
+import 'package:yuktidea_ui/app/utils/app_string.dart';
 
 class PasswordTextField extends StatelessWidget {
   final String hintText;
@@ -38,14 +39,14 @@ class PasswordTextField extends StatelessWidget {
             fontSize: 15,
             color: AppColors.kWhiteColor,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Montserrat'
+            fontFamily: AppString.fontFamily,
           ),
           decoration: InputDecoration(
             hintStyle: TextStyle(
               color: AppColors.kWhiteColor,
               fontWeight: FontWeight.bold,
               fontSize: 12,
-              fontFamily: 'Montserrat'
+              fontFamily: AppString.fontFamily,
             ),
             fillColor: AppColors.kBlackColor,
             filled: true,
@@ -58,7 +59,7 @@ class PasswordTextField extends StatelessWidget {
                 color: isPasswordHidden
                     ? AppColors.kGreyColor
                     : AppColors.kRedColor,
-                size: 18,
+                size: 16,
               ),
               onTap: onPressed,
             ),

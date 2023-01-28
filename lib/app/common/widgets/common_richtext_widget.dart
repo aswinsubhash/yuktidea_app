@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:yuktidea_ui/app/utils/app_colors.dart';
+import 'package:yuktidea_ui/app/utils/app_string.dart';
 
 class CustomRichTextWidget extends StatelessWidget {
   final String text;
@@ -19,10 +20,11 @@ class CustomRichTextWidget extends StatelessWidget {
       text: TextSpan(
         text: text,
         style: TextStyle(
-            color: AppColors.kGreyColor,
-            fontSize: 12,
-            fontFamily: 'Montserrat',
-            fontWeight: FontWeight.bold),
+          color: AppColors.kGreyColor,
+          fontSize: 12,
+          fontFamily: AppString.fontFamily,
+          fontWeight: FontWeight.bold,
+        ),
         children: <TextSpan>[
           TextSpan(
             text: clickText,

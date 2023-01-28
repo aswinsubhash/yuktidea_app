@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yuktidea_ui/app/utils/app_colors.dart';
-
-
+import 'package:yuktidea_ui/app/utils/app_string.dart';
 
 class CustomTextFieldWidget extends StatelessWidget {
-
   final String hintText;
   final TextEditingController controller;
   final String? validationMessage;
@@ -12,7 +10,6 @@ class CustomTextFieldWidget extends StatelessWidget {
 
   CustomTextFieldWidget(
       {Key? key,
-
       required this.hintText,
       required this.controller,
       this.validationMessage,
@@ -29,7 +26,7 @@ class CustomTextFieldWidget extends StatelessWidget {
           if (checkValidationMessage != null) {
             if (RegExp(r'.+@.+\.com$').hasMatch(value)) {
               return null;
-            }else if(RegExp(r'^(?:[+0]9)?[0-9]{10}$').hasMatch(value)){
+            } else if (RegExp(r'^(?:[+0]9)?[0-9]{10}$').hasMatch(value)) {
               return null;
             }
             return checkValidationMessage;
@@ -41,9 +38,9 @@ class CustomTextFieldWidget extends StatelessWidget {
       cursorColor: AppColors.kRedColor,
       style: TextStyle(
         fontSize: 15,
-         color: AppColors.kWhiteColor,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Montserrat'
+        color: AppColors.kWhiteColor,
+        fontWeight: FontWeight.bold,
+        fontFamily: AppString.fontFamily,
       ),
       decoration: InputDecoration(
         hintText: hintText,
@@ -51,7 +48,7 @@ class CustomTextFieldWidget extends StatelessWidget {
           color: AppColors.kWhiteColor,
           fontWeight: FontWeight.bold,
           fontSize: 12,
-          fontFamily: 'Montserrat'
+          fontFamily: AppString.fontFamily,
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -60,10 +57,9 @@ class CustomTextFieldWidget extends StatelessWidget {
         ),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
         contentPadding: EdgeInsets.all(8.0),
-         fillColor: AppColors.kBlackColor,
-            filled: true,
+        fillColor: AppColors.kBlackColor,
+        filled: true,
       ),
-      
     );
   }
 }
