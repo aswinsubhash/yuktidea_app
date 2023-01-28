@@ -29,21 +29,19 @@ class LoginView extends GetView<LoginController> {
                     Text(
                       'Welcome Back!',
                       style: TextStyle(
-                        color: AppColors.kWhiteColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        fontFamily: 'Montserrat'
-                      ),
+                          color: AppColors.kWhiteColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          fontFamily: 'Montserrat'),
                     ),
                     commonHeight(10),
                     Text(
                       'Please sign in to your account',
                       style: TextStyle(
-                        color: AppColors.kWhiteColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        fontFamily: 'Montserrat'
-                      ),
+                          color: AppColors.kWhiteColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                          fontFamily: 'Montserrat'),
                     ),
                     commonHeight(Get.height / 4.5),
                     SizedBox(
@@ -52,11 +50,12 @@ class LoginView extends GetView<LoginController> {
                         hintText: 'Email/Phone number',
                         controller: controller.emailOrPasswordController,
                         validationMessage: 'Enter this field',
-                        checkValidationMessage: 'Please enter valid email or password',
+                        checkValidationMessage:
+                            'Please enter valid email or password',
                       ),
                     ),
                     SizedBox(
-                       height: 75,
+                      height: 75,
                       child: PasswordTextField(
                         hintText: 'Password',
                         validationMessage: 'Please enter password',
@@ -71,16 +70,16 @@ class LoginView extends GetView<LoginController> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         RichText(
-                            text: TextSpan(
-                          text: 'Forgot Password?',
-                          style: TextStyle(
-                            color: AppColors.kGreyColor,
-                            fontSize: 12,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold
+                          text: TextSpan(
+                            text: 'Forgot Password?',
+                            style: TextStyle(
+                                color: AppColors.kGreyColor,
+                                fontSize: 12,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold),
+                            recognizer: TapGestureRecognizer()..onTap = () {},
                           ),
-                          recognizer: TapGestureRecognizer()..onTap = () {},
-                        )),
+                        ),
                       ],
                     ),
                     commonHeight(Get.height / 5),
@@ -100,7 +99,9 @@ class LoginView extends GetView<LoginController> {
                     CustomRichTextWidget(
                       text: "Dont't have an account?",
                       clickText: ' Signup',
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.onSignupClick();
+                      },
                     )
                   ],
                 ),
