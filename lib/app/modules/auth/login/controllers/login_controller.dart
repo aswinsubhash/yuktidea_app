@@ -10,6 +10,8 @@ class LoginController extends GetxController {
       TextEditingController();
   final GlobalKey<FormState> formKeyLogin = GlobalKey<FormState>();
 
+  
+
   void passwordHiding() {
     isPasswordHidden.value = !isPasswordHidden.value;
   }
@@ -25,5 +27,11 @@ class LoginController extends GetxController {
         duration: Duration(
           milliseconds: 400,
         ));
+  }
+  @override
+  void onClose() {
+    passwordController.dispose();
+    emailOrPasswordController.dispose();
+    super.onClose();
   }
 }

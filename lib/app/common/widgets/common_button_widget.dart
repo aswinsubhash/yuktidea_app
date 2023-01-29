@@ -23,7 +23,7 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           backgroundColor: buttonColor,
-          minimumSize: const Size(double.infinity, 40),
+          minimumSize: const Size(double.infinity, 45),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius),
           )),
