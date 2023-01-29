@@ -7,6 +7,8 @@ import 'package:yuktidea_ui/app/common/widgets/common_richtext_widget.dart';
 import 'package:yuktidea_ui/app/common/widgets/common_sizedbox_widget.dart';
 import 'package:yuktidea_ui/app/common/widgets/common_textfield_widget.dart';
 import 'package:yuktidea_ui/app/common/widgets/password_textfield_widget.dart';
+import 'package:yuktidea_ui/app/modules/auth/login/api/login_api.dart';
+import 'package:yuktidea_ui/app/modules/auth/login/model/login_model.dart';
 import 'package:yuktidea_ui/app/utils/app_colors.dart';
 import 'package:yuktidea_ui/app/utils/app_string.dart';
 
@@ -22,7 +24,9 @@ class LoginView extends GetView<LoginController> {
         () => Center(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 35,),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 35,
+              ),
               child: Form(
                 key: controller.formKeyLogin,
                 child: Column(
@@ -55,7 +59,7 @@ class LoginView extends GetView<LoginController> {
                         validationMessage: 'Please enter email or phone',
                         checkValidationMessage:
                             'Please enter valid email or password',
-                            keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                     ),
                     SizedBox(
@@ -92,8 +96,9 @@ class LoginView extends GetView<LoginController> {
                       width: 200,
                       child: CustomButton(
                         text: 'Login',
-                        onPressed: () {
-                          controller.onLoginClick();
+                        onPressed: () async {
+                           controller.onLoginClick();
+                       
                         },
                         textColor: AppColors.kWhiteColor,
                         buttonColor: AppColors.kRedColor,
