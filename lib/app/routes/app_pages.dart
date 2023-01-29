@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:get/get.dart';
 
 import 'package:yuktidea_ui/app/modules/auth/login/bindings/login_binding.dart';
@@ -19,7 +21,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(

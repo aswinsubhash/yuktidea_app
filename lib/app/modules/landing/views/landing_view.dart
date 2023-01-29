@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:yuktidea_ui/app/common/widgets/common_button_widget.dart';
 import 'package:yuktidea_ui/app/common/widgets/common_sizedbox_widget.dart';
 import 'package:yuktidea_ui/app/utils/app_colors.dart';
+import 'package:yuktidea_ui/app/utils/app_string.dart';
 
 import '../controllers/landing_controller.dart';
 
@@ -39,36 +40,42 @@ class LandingView extends GetView<LandingController> {
               ),
             ),
           ),
-          Positioned(
-            top: 70,
-            left: 50,
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 70),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/logo.png',
+                    scale: 2.5,
+                  ),
+                  commonWidth(10),
+                  Text(
+                    AppString.appName,
+                    style: TextStyle(
+                      color: AppColors.kWhiteColor,
+                      fontFamily: 'Posterama',
+                      fontSize: 30,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.center,
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Image.asset(
-                      'assets/images/logo.png',
-                      scale: 2.5,
-                    ),
-                    commonWidth(10),
-                    Text(
-                      'CINE COMPASS',
-                      style: TextStyle(
-                        color: AppColors.kWhiteColor,
-                        fontFamily: 'Posterama',
-                        fontSize: 30,
-                      ),
-                    ),
-                  ],
-                ),
-                commonHeight(Get.height / 1.6),
+                commonHeight(Get.height / 1.3),
                 Text(
                   'YOUR ONE STOP SOLUTION TO',
                   style: TextStyle(
                     color: AppColors.kWhiteColor,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Montserrat'
+                    fontFamily: AppString.fontFamily,
                   ),
                 ),
                 commonHeight(10),
@@ -78,7 +85,7 @@ class LandingView extends GetView<LandingController> {
                     color: AppColors.kWhiteColor,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Montserrat'
+                    fontFamily: AppString.fontFamily,
                   ),
                 ),
                 commonHeight(20),
@@ -86,8 +93,8 @@ class LandingView extends GetView<LandingController> {
                   width: 200,
                   height: 45,
                   child: CustomButton(
-                    text: 'Get Started',
-                    onPressed: (){
+                    text: AppString.landiingButton,
+                    onPressed: () {
                       controller.getStartedClick();
                     },
                     textColor: AppColors.kWhiteColor,
@@ -97,7 +104,7 @@ class LandingView extends GetView<LandingController> {
                 )
               ],
             ),
-          )
+          ),
         ],
       ),
     );

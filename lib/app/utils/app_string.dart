@@ -1,7 +1,8 @@
 class AppString {
 
-  static const String appName = 'Cinecompass';
+  static const String appName = 'Cine compass';
   static const String fontFamily = 'Montserrat';
+  static const String landiingButton = 'Get Started';
   static const String signupScreenTitle = 'Create New Account';
   static const String signupScreenSubtitle = 'Fill in the form to continue';
   static const String loginScreenTitle = 'Welcome Back!';

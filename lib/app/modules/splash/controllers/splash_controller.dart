@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:yuktidea_ui/app/modules/landing/bindings/landing_binding.dart';
 import 'package:yuktidea_ui/app/modules/landing/views/landing_view.dart';
 
 class SplashController extends GetxController {
@@ -13,6 +14,7 @@ class SplashController extends GetxController {
     Get.off(
       () => LandingView(),
       transition: Transition.fadeIn,
+      binding: LandingBinding()
     );
   }
 }

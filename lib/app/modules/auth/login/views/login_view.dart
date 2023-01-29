@@ -22,7 +22,7 @@ class LoginView extends GetView<LoginController> {
         () => Center(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 80),
+              padding: const EdgeInsets.symmetric(horizontal: 35,),
               child: Form(
                 key: controller.formKeyLogin,
                 child: Column(
