@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:yuktidea_ui/app/common/widgets/full_screen_loader.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/api/login_api.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/model/login_model.dart';
 import 'package:yuktidea_ui/app/modules/auth/sign_up/bindings/sign_up_binding.dart';
@@ -19,8 +20,6 @@ class LoginController extends GetxController {
 
   String? token;
 
-
-
   void passwordHiding() {
     isPasswordHidden.value = !isPasswordHidden.value;
   }
@@ -30,27 +29,29 @@ class LoginController extends GetxController {
   /// Displays a welcome snackbar if the login was successful, or an error snackbar if the login was unsuccessful.
   Future<void> onLoginClick() async {
     if (formKeyLogin.currentState!.validate()) {
-      LoginModel? response =
-          await LoginAPI().loginServices(
+      FullScreenDialogLoader.showLoading();
+      LoginModel? response = await LoginAPI().loginServices(
         emailOrPasswordController.text,
         passwordController.text,
       );
+      
+      FullScreenDialogLoader.hideLoading();
       if (response != null) {
+        
         if (response.status == true) {
           AppSnackbars.welcomeSnackBar(
             message: response.message!,
             title: 'Hola! Welcome Back to CINE COMPASS',
           );
-          Get.offAll(() => HomeView(),binding: HomeBinding());
+          Get.offAll(() => HomeView(), binding: HomeBinding());
+          tokenSaving(response.data?[0].accessToken ?? '');
+          
         } else {
           AppSnackbars.showErrorSnackBar(
             message: response.message!,
           );
-           token = response.data?[0].accessToken;
         }
-       
       }
-      tokenSaving();
     }
   }
 
@@ -66,16 +67,12 @@ class LoginController extends GetxController {
     );
   }
 
-    void setIsLoggedIn(bool value) {
+  void setIsLoggedIn(bool value) {
     isLoggedIn.value = value;
   }
 
-  Future<void> tokenSaving() async {
+  Future<void> tokenSaving(String tokenId) async {
     final storage = FlutterSecureStorage();
-    await storage.write(key: 'token', value: token);
-
-    print(await storage.read(key: 'token'));
+    await storage.write(key: 'token', value: tokenId);
   }
-
-
 }
