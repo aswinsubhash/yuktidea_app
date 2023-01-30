@@ -3,17 +3,17 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 
 import 'package:yuktidea_ui/app/modules/auth/login/model/login_model.dart';
-import 'package:yuktidea_ui/app/services/api_services.dart';
+import 'package:yuktidea_ui/app/services/dio_client.dart';
+import 'package:yuktidea_ui/app/services/token_interceptor.dart';
 
 class LoginAPI {
-  final APIServices apiServices;
+ 
 
-  LoginAPI({
-    required this.apiServices,
-  });
 
   Future<LoginModel?> loginServices(String? loginId, String? password) async {
     print('sdfsdfsdfsf');
+    Dio dio = DioClient().dio;
+   dio.interceptors.add(TokenInterceptor()); 
     try {
       var formData = FormData.fromMap({
         "login": loginId,
@@ -21,7 +21,7 @@ class LoginAPI {
       });
       //   "login": "9876543210",
       // "password": "password",
-      Response response = await apiServices.dio.post(
+      Response response = await dio.post(
         '/login',
         data: formData,
       );
@@ -30,12 +30,13 @@ class LoginAPI {
       if (response.statusCode! >= 200 || response.statusCode! <= 299) {
         return LoginModel.fromJson(response.data);
       }
-      log(response.data);
     } catch (e) {
+  
       if (e is DioError) {
-        if (e.response!.statusCode == 401) {
           log(e.response!.data.toString());
-
+ 
+        if (e.response!.statusCode == 401) {
+        
           return LoginModel.fromJson(e.response!.data);
         }
         if (e.response?.data == null) {

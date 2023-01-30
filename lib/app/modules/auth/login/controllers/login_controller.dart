@@ -5,12 +5,13 @@ import 'package:yuktidea_ui/app/modules/auth/login/api/login_api.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/model/login_model.dart';
 import 'package:yuktidea_ui/app/modules/auth/sign_up/bindings/sign_up_binding.dart';
 import 'package:yuktidea_ui/app/modules/auth/sign_up/views/sign_up_view.dart';
+import 'package:yuktidea_ui/app/modules/home/bindings/home_binding.dart';
 import 'package:yuktidea_ui/app/modules/home/views/home_view.dart';
-import 'package:yuktidea_ui/app/services/api_services.dart';
 import 'package:yuktidea_ui/app/utils/app_snackbar_widget.dart';
 
 class LoginController extends GetxController {
   var isPasswordHidden = true.obs;
+  final isLoggedIn = false.obs;
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailOrPasswordController =
       TextEditingController();
@@ -18,12 +19,7 @@ class LoginController extends GetxController {
 
   String? token;
 
-  @override
-  void onClose() {
-    passwordController.dispose();
-    emailOrPasswordController.dispose();
-    super.onClose();
-  }
+
 
   void passwordHiding() {
     isPasswordHidden.value = !isPasswordHidden.value;
@@ -35,7 +31,7 @@ class LoginController extends GetxController {
   Future<void> onLoginClick() async {
     if (formKeyLogin.currentState!.validate()) {
       LoginModel? response =
-          await LoginAPI(apiServices: APIServices()).loginServices(
+          await LoginAPI().loginServices(
         emailOrPasswordController.text,
         passwordController.text,
       );
@@ -45,13 +41,14 @@ class LoginController extends GetxController {
             message: response.message!,
             title: 'Hola! Welcome Back to CINE COMPASS',
           );
-          Get.offAll(() => HomeView());
+          Get.offAll(() => HomeView(),binding: HomeBinding());
         } else {
           AppSnackbars.showErrorSnackBar(
             message: response.message!,
           );
+           token = response.data?[0].accessToken;
         }
-        token = response.data?[0].accessToken;
+       
       }
       tokenSaving();
     }
@@ -69,10 +66,16 @@ class LoginController extends GetxController {
     );
   }
 
+    void setIsLoggedIn(bool value) {
+    isLoggedIn.value = value;
+  }
+
   Future<void> tokenSaving() async {
     final storage = FlutterSecureStorage();
     await storage.write(key: 'token', value: token);
 
     print(await storage.read(key: 'token'));
   }
+
+
 }

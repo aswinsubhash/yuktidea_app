@@ -7,8 +7,6 @@ import 'package:yuktidea_ui/app/common/widgets/common_richtext_widget.dart';
 import 'package:yuktidea_ui/app/common/widgets/common_sizedbox_widget.dart';
 import 'package:yuktidea_ui/app/common/widgets/common_textfield_widget.dart';
 import 'package:yuktidea_ui/app/common/widgets/password_textfield_widget.dart';
-import 'package:yuktidea_ui/app/modules/auth/login/api/login_api.dart';
-import 'package:yuktidea_ui/app/modules/auth/login/model/login_model.dart';
 import 'package:yuktidea_ui/app/utils/app_colors.dart';
 import 'package:yuktidea_ui/app/utils/app_string.dart';
 

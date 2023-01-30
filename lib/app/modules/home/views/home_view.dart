@@ -12,6 +12,21 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: AppColors.kBackgroundColor,
+        elevation: 0,
+         actions: [
+          GestureDetector(
+            onTap: (){
+              controller.logout();
+            },
+            child: Icon(
+              Icons.logout,
+             // color: AppColor.blackColor,
+            ),
+          )
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

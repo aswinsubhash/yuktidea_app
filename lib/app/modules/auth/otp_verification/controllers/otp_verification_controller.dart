@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:timer_count_down/timer_controller.dart';
+import 'package:yuktidea_ui/app/modules/auth/otp_verification/api/verify_otp_api.dart';
+import 'package:yuktidea_ui/app/modules/auth/otp_verification/model/otp_verify_model.dart';
 import 'package:yuktidea_ui/app/modules/home/views/home_view.dart';
 import 'package:yuktidea_ui/app/utils/app_snackbar_widget.dart';
 
@@ -8,6 +12,7 @@ class OtpVerificationController extends GetxController {
   final TextEditingController otpController = TextEditingController();
   final CountdownController countdownController = CountdownController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var otp = ''.obs;
 
   @override
   void onReady() {
@@ -21,9 +26,25 @@ class OtpVerificationController extends GetxController {
     super.onClose();
   }
 
-  void onVefifyClick() {
+  void onVefifyClick() async {
     if (formKey.currentState!.validate()) {
-      Get.off(()=>HomeView());
+      log(otp.value);
+      OtpVerificationModel? response =
+          await OtpVerificationAPI().verifyOtpService(
+        otp.value,
+      );
+      if (response != null) {
+        if (response.status == true) {
+          AppSnackbars.showSuccessSnackBar(
+            message: response.message!,
+          );
+          Get.off(() => HomeView());
+        } else {
+          AppSnackbars.showErrorSnackBar(
+            message: 'Invalid OTP',
+          );
+        }
+      }
     }
   }
 }

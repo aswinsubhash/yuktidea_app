@@ -7,7 +7,6 @@ import 'package:timer_count_down/timer_count_down.dart';
 import 'package:yuktidea_ui/app/common/widgets/common_button_widget.dart';
 import 'package:yuktidea_ui/app/common/widgets/common_sizedbox_widget.dart';
 import 'package:yuktidea_ui/app/utils/app_colors.dart';
-import 'package:yuktidea_ui/app/utils/app_snackbar_widget.dart';
 import 'package:yuktidea_ui/app/utils/app_string.dart';
 
 import '../controllers/otp_verification_controller.dart';
@@ -58,11 +57,13 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                     },
                     appContext: context,
                     length: 4,
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      controller.otp.value = value;
+                    },
                     animationType: AnimationType.none,
                     showCursor: false,
                     enableActiveFill: true,
-                    autoFocus: true,
+                   
                     textStyle: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
