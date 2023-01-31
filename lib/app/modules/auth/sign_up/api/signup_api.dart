@@ -36,7 +36,7 @@ class SignupAPI {
       }
     } catch (e) {
       if (e is DioError) {
-        log(e.response!.data.toString());
+        log(e.response?.data.toString() ?? '');
 
         if (e.response!.statusCode == 400) {
           return SignupModel.fromJson(e.response!.data);

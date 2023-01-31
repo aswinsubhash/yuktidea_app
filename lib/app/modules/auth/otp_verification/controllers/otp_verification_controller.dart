@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:timer_count_down/timer_controller.dart';
+import 'package:yuktidea_ui/app/common/widgets/full_screen_loader.dart';
 import 'package:yuktidea_ui/app/modules/auth/otp_verification/api/verify_otp_api.dart';
 import 'package:yuktidea_ui/app/modules/auth/otp_verification/model/otp_verify_model.dart';
+import 'package:yuktidea_ui/app/modules/home/bindings/home_binding.dart';
 import 'package:yuktidea_ui/app/modules/home/views/home_view.dart';
 import 'package:yuktidea_ui/app/utils/app_snackbar_widget.dart';
 
@@ -33,19 +35,24 @@ class OtpVerificationController extends GetxController {
 
     if (formKey.currentState!.validate()) {
       log(otp.value);
+       FullScreenDialogLoader.showLoading();
       OtpVerificationModel? response =
           await OtpVerificationAPI().verifyOtpService(
         otp.value,
       );
+    //  print(response?.data.toString());
+    //  FullScreenDialogLoader.hideLoading();
       if (response != null) {
+        
         if (response.status == true) {
+         
           AppSnackbars.welcomeSnackBar(
             message: response.message!,
             title: 'Welcome to CINE COMPASS',
           );
           final token = await storage.read(key: 'token');
           await storage.write(key: 'login_key', value: token);
-          Get.offAll(() => HomeView());
+          Get.offAll(() => HomeView(),binding: HomeBinding());
         } else {
           AppSnackbars.showErrorSnackBar(
             message: 'Invalid OTP',

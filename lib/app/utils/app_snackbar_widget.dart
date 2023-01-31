@@ -21,8 +21,10 @@ class AppSnackbars {
   }) {
     Get.showSnackbar(
       GetSnackBar(
-        message: message,
-        backgroundColor: Color.fromRGBO(0, 255, 0, 1.0),
+        messageText: Text(
+          message,
+        ),
+        backgroundColor: AppColors.kWhiteColor,
         duration: Duration(seconds: 3),
         snackStyle: SnackStyle.FLOATING,
       ),

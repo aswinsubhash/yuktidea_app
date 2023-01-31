@@ -96,12 +96,17 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                     currentRemainingTime,
                   ) {
                     if (currentRemainingTime == 0.0) {
-                      return Text(
-                        'OTP Resent!',
-                        style: TextStyle(
-                          color: AppColors.kWhiteColor,
-                          fontFamily: AppString.fontFamily,
-                          fontWeight: FontWeight.bold,
+                      return GestureDetector(
+                        onTap: (){
+                          
+                        },
+                        child: Text(
+                          'OTP Resent!',
+                          style: TextStyle(
+                            color: AppColors.kWhiteColor,
+                            fontFamily: AppString.fontFamily,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       );
                     } else {

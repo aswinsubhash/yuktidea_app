@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:yuktidea_ui/app/common/widgets/full_screen_loader.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/bindings/login_binding.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/views/login_view.dart';
 import 'package:yuktidea_ui/app/modules/auth/otp_verification/bindings/otp_verification_binding.dart';
@@ -32,6 +33,7 @@ class SignUpController extends GetxController {
           message: 'Password do not match',
         );
       } else {
+        FullScreenDialogLoader.showLoading();
         SignupModel? response = await SignupAPI().signupServices(
           nameController.text,
           emailController.text,
@@ -39,7 +41,7 @@ class SignUpController extends GetxController {
           passwordController.text,
           confirmPasswordController.text,
         );
-
+        FullScreenDialogLoader.hideLoading(); 
         if (response != null) {
           if (response.status == true) {
             AppSnackbars.showSuccessSnackBar(
