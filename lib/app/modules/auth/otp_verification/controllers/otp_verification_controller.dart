@@ -26,7 +26,8 @@ class OtpVerificationController extends GetxController {
     super.onClose();
   }
 
-  void onVefifyClick() async {
+  Future<void> onVefifyClick() async {
+  
     if (formKey.currentState!.validate()) {
       log(otp.value);
       OtpVerificationModel? response =
@@ -38,7 +39,8 @@ class OtpVerificationController extends GetxController {
           AppSnackbars.showSuccessSnackBar(
             message: response.message!,
           );
-          Get.off(() => HomeView());
+         
+          Get.offAll(() => HomeView());
         } else {
           AppSnackbars.showErrorSnackBar(
             message: 'Invalid OTP',

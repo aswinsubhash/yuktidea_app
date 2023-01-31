@@ -5,19 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:yuktidea_ui/app/services/dio_client.dart';
 
 class TokenInterceptor extends Interceptor {
-  @override
-  Future onRequest(
-      RequestOptions options, RequestInterceptorHandler handler) async {
-    print('sdfsdfsdfsdf');
-    final excludePaths = <String>['/login', '/register'];
-    if (excludePaths.contains(options.path)) {
-      return;
-    }
-    final storage = FlutterSecureStorage();
-    final token = await storage.read(key: 'token');
-    print(token);
-    options.headers['Authorization'] = 'Bearer $token';
-  }
+
 
   @override
   Future onError(DioError err, ErrorInterceptorHandler handler) async {
@@ -31,7 +19,7 @@ class TokenInterceptor extends Interceptor {
       print('sdfdsf');
 
       print('gggggg');
-      Response response = await dio.post('/refresh',
+      Response response = await dio.get('/refresh',
           options: Options(headers: {
             'Accept': 'application/json',
             'Authorization': 'Bearer $token'

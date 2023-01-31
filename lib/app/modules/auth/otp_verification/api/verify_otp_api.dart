@@ -1,12 +1,18 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:yuktidea_ui/app/modules/auth/otp_verification/model/otp_verify_model.dart';
 import 'package:yuktidea_ui/app/services/dio_client.dart';
+import 'package:yuktidea_ui/app/services/token_interceptor.dart';
 
 class OtpVerificationAPI {
   Future<OtpVerificationModel?> verifyOtpService(String? otp) async {
-    Dio dio = DioClient().dio;
+    Dio dio = DioClient().dio..interceptors.add(TokenInterceptor()); 
+    
+
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token'); 
 
     try {
       var formData = FormData.fromMap({
@@ -16,6 +22,12 @@ class OtpVerificationAPI {
       Response response = await dio.post(
         '/otp/verify',
         data: formData,
+        options: Options(
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer $token'
+          }
+        )
       );
 
       log(response.data.toString());

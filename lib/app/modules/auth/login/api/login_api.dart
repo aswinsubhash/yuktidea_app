@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 
 import 'package:yuktidea_ui/app/modules/auth/login/model/login_model.dart';
 import 'package:yuktidea_ui/app/services/dio_client.dart';
-import 'package:yuktidea_ui/app/services/token_interceptor.dart';
 
 class LoginAPI {
  
@@ -13,7 +12,7 @@ class LoginAPI {
   Future<LoginModel?> loginServices(String? loginId, String? password) async {
     print('sdfsdfsdfsf');
     Dio dio = DioClient().dio;
-   dio.interceptors.add(TokenInterceptor()); 
+   
     try {
       var formData = FormData.fromMap({
         "login": loginId,

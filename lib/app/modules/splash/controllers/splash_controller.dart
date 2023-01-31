@@ -1,7 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:yuktidea_ui/app/modules/auth/login/controllers/login_controller.dart';
-import 'package:yuktidea_ui/app/modules/auth/login/views/login_view.dart';
 import 'package:yuktidea_ui/app/modules/home/bindings/home_binding.dart';
 import 'package:yuktidea_ui/app/modules/home/views/home_view.dart';
 import 'package:yuktidea_ui/app/modules/landing/bindings/landing_binding.dart';
@@ -15,14 +14,6 @@ class SplashController extends GetxController {
     super.onInit();
   }
 
-  // checkUserLoggedIn() async {
-  //   await Future.delayed(Duration(seconds: 3));
-  //   Get.off(
-  //     () => LandingView(),
-  //     transition: Transition.fadeIn,
-  //     binding: LandingBinding()
-  //   );
-  // }
 
     Future<void> checkUserLoggedIn()async{
     final storage = FlutterSecureStorage();

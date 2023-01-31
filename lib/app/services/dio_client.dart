@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:yuktidea_ui/app/services/token_interceptor.dart';
 
 class DioClient {
   Dio dio = Dio(
