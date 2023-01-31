@@ -17,7 +17,8 @@ class SplashController extends GetxController {
 
     Future<void> checkUserLoggedIn()async{
     final storage = FlutterSecureStorage();
-    String? token = await storage.read(key: 'token');
+    final token = await storage.read(key: 'login_key');
+    print(token);
     if(token != null){
       loginController.setIsLoggedIn(true);
     }else{

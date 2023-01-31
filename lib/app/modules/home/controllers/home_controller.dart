@@ -6,10 +6,12 @@ import 'package:yuktidea_ui/app/modules/auth/login/views/login_view.dart';
 
 class HomeController extends GetxController {
   final loginController = Get.put(LoginController());
+
+   final storage = FlutterSecureStorage(); 
   Future<void> logout() async {
-    final storage = FlutterSecureStorage();
+   
     await storage.delete(key: 'token');
-    await storage.delete(key: 'userId');
+    await storage.delete(key: 'login_key');
     loginController.setIsLoggedIn(false);
     Get.offAll(() => LoginView(), binding: LoginBinding());
   }

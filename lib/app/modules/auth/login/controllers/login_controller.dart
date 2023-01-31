@@ -18,7 +18,7 @@ class LoginController extends GetxController {
       TextEditingController();
   final GlobalKey<FormState> formKeyLogin = GlobalKey<FormState>();
 
-  String? token;
+
 
   void passwordHiding() {
     isPasswordHidden.value = !isPasswordHidden.value;
@@ -74,5 +74,7 @@ class LoginController extends GetxController {
   Future<void> tokenSaving(String tokenId) async {
     final storage = FlutterSecureStorage();
     await storage.write(key: 'token', value: tokenId);
+    await storage.write(key: 'login_key', value: tokenId);
+    print(await storage.read(key: 'login_key'));
   }
 }
